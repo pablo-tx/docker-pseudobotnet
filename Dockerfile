@@ -10,8 +10,8 @@ ADD VPN /VPN
 ADD auth.txt /auth.txt
 ADD scripts/killswitch.sh /killswitch.sh
 ADD scripts/start_vpn.sh /start_vpn.sh
-RUN chmod 775 /start_vpn.sh
-RUN chmod 775 /killswitch.sh
+ADD scripts/stuck_check.sh /stuck_check.sh
+RUN chmod 775 /*.sh
 
 EXPOSE 8080
 CMD ["supervisord","-n"]
