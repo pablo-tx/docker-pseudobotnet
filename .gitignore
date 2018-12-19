@@ -1,1 +1,4 @@
 VPN/*
+hydra.restore
+proxychains.conf
+haproxy/haproxy.cfg

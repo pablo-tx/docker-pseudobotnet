@@ -6,12 +6,13 @@ RUN apk add --no-cache dante-server@testing supervisor openvpn iptables ufw@test
 
 # Configuracion
 ADD etc/ /etc/
-ADD VPN /VPN
+
 ADD auth.txt /auth.txt
 ADD scripts/killswitch.sh /killswitch.sh
 ADD scripts/start_vpn.sh /start_vpn.sh
 ADD scripts/stuck_check.sh /stuck_check.sh
 RUN chmod 775 /*.sh
+ADD VPN /VPN
 
 EXPOSE 8080
 CMD ["supervisord","-n"]
